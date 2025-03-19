@@ -12,11 +12,24 @@ public class Main {
         printMatrix(matrix);
 
 //        Разворот матрицы;
-//        int[][] result = rotateMatrix(matrix);
+        int[][] result = rotateMatrix(matrix);
 
 //        Вывод матрицы после поворота на 90 градусов.
-//        System.out.println("Перевернутая матрица");
-//        printMatrix(result);
+        System.out.println("Перевернутая матрица");
+        printMatrix(result);
+    }
+
+    private static int[][] rotateMatrix(int[][] origin) {
+        int size = origin.length;
+        int[][] result = new int[size][size];
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                result[i][j] = origin[SIZE - 1 - j][i];
+            }
+        }
+
+        return result;
     }
 
     private static int[][] createMatrix(int rows, int cols) {
