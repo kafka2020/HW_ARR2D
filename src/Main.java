@@ -12,20 +12,32 @@ public class Main {
         printMatrix(matrix);
 
 //        Разворот матрицы;
-        int[][] result = rotateMatrix(matrix);
+        int[][] result = rotateMatrix(matrix, 270);
 
 //        Вывод матрицы после поворота на 90 градусов.
         System.out.println("Перевернутая матрица");
         printMatrix(result);
     }
 
-    private static int[][] rotateMatrix(int[][] origin) {
+    private static int[][] rotateMatrix(int[][] origin, int angle) {
         int size = origin.length;
         int[][] result = new int[size][size];
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                result[i][j] = origin[SIZE - 1 - j][i];
+                switch (angle) {
+                    case 90:
+                        result[i][j] = origin[size - 1 - j][i];
+                        break;
+                    case 180:
+                        result[i][j] = origin[size - 1 - i][size - 1 - j];
+                        break;
+                    case 270:
+                        result[size - 1 - j][i] = origin[i][j];
+                        break;
+                    default:
+                        result[i][j] = origin[i][j];
+                }
             }
         }
 
